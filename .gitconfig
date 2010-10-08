@@ -1,0 +1,8 @@
+[user]
+	name = kozy4324
+	email = kozy4324
+[color]
+	ui = auto
+[alias]
+	lg = log --graph --decorate --oneline --abbrev --relative-date --topo-order
+	lga = log --graph --decorate --oneline --abbrev --relative-date --topo-order --all
