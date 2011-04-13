@@ -3,3 +3,4 @@ set tabstop=4
 set fileencodings=utf-8
 
 filetype on
+syntax on
