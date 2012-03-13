@@ -41,3 +41,20 @@ augroup JUnit
   autocmd!
   autocmd BufWinEnter,BufNewFile *Test.java set filetype=java.test
 augroup END
+
+"
+" quickrun for TAP result
+"
+let tap_outputter = quickrun#outputter#buffer#new()
+function! tap_outputter.init(session)
+  call call(quickrun#outputter#buffer#new().init, [a:session], self)
+endfunction
+function! tap_outputter.finish(session)
+  highlight default TapNotOk ctermfg=White ctermbg=Red guifg=White guibg=Red
+  highlight default TapSkip ctermfg=none ctermbg=Yellow guifg=none guibg=Yellow
+  call matchadd("TapNotOk","^not ok [1-9]*.*$")
+  call matchadd("TapSkip" ,".*# SKIP.*$")
+  call call(quickrun#outputter#buffer#new().finish,  [a:session], self)
+endfunction
+call quickrun#register_outputter("tap_outputter", tap_outputter)
+let g:quickrun_config['coffee'] = {'outputter': 'tap_outputter'}
