@@ -17,6 +17,7 @@ nmap <silent> <C-c> :write<CR>:!cake<CR>
 " ruby & RSpec
 "
 au BufNewFile,BufReadPost *.rb setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufReadPost Rakefile setl tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 let g:quickrun_config = {}
 let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
 augroup UjihisaRSpec
